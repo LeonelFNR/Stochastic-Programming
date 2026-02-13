@@ -1,0 +1,9 @@
+# data of gas distribution planning problem
+#(version without SETS)
+
+param T = 3;
+param: 	c	cs	d :=
+	1	20	8	100		
+	2	19	2	120
+	3	22	5	130	;				
+

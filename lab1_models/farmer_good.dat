@@ -1,0 +1,17 @@
+set CROP1 := wheat corn ;
+set CROP2 := sugar_beet ;
+
+param:         yield  cplant  :=
+  wheat        3     150 
+  corn   	   3.6   230  
+  sugar_beet   24    260  ;
+
+param:        min_crop 	  psell  ppurchase :=
+  wheat       200         170    238
+  corn        240         150    210;
+
+param pvbelow := 36;
+param pvabove:= 10;
+param land_total := 500 ;
+
+

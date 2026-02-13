@@ -1,0 +1,9 @@
+reset;
+model gas1.mod
+data gas1.dat;
+option solver cplexamp;
+show;
+expand;
+solve;
+
+display x,y,z;

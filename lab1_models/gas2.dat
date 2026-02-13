@@ -1,0 +1,10 @@
+# data of gas distribution planning problem
+#(version with SETS)
+
+set MONTHS2 := BEGIN JANUARY FEBRUARY MARCH ;
+
+param: 		 c	cs	d :=
+	JANUARY	 20	8	100		
+	FEBRUARY 19	2	120
+	MARCH	 22	5	130	;				
+
