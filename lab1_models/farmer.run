@@ -3,7 +3,7 @@ model farmer.mod;
 data farmer.dat;
 #data farmer_bad.dat;
 #data farmer_good.dat;
-option solver cplexamp;
+option solver cplex;
 show;
 expand;
 solve;

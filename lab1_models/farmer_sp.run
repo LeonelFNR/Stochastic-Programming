@@ -1,0 +1,18 @@
+reset;
+
+shell "cd";
+option log_file "results.txt";
+
+model farmer_sp.mod;
+data farmer_sp.dat;
+
+option solver cplex;
+
+show;
+expand;
+solve;
+
+display x,y,w;
+display wbelow, wabove;
+
+option log_file "";

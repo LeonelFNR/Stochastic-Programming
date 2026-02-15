@@ -1,0 +1,25 @@
+# dades deterministes del problema del pages
+
+set CROP1 := wheat corn ;
+set CROP2 := sugar_beet ;
+set SCEN := 1,2,3; # 1 = bad , 2 = normal, 3 = good
+
+param yield:
+				1	2	3 :=
+  wheat 		2	2.5	3
+  corn			2.4	3	3.6
+  sugar_beet	16	20	24 ;
+
+param:         cplant  :=
+  wheat          150 
+  corn   	     230  
+  sugar_beet     260  		;
+
+param:         min_crop 	psell 	ppurchase :=
+  wheat         200         170    	238
+  corn	        240         150    	210;
+
+param pvbelow := 36;
+param pvabove:= 10;
+param land_total := 500 ;
+
