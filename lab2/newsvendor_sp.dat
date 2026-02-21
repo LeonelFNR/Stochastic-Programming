@@ -1,4 +1,4 @@
-param N := 5000;
+param N := 200;
 param a := 100;
 param b := 200;
 param q := 10;

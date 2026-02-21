@@ -1,4 +1,7 @@
 reset;
+shell "cd";
+option log_file "results.txt";
+
 model newsvendor_sp.mod;
 data newsvendor_sp.dat;
 option solver cplex;
@@ -6,4 +9,12 @@ show;
 expand;
 solve;
 
+printf "The solution of the analytic version is x = 140 and -cost function = -240\n";
+
+
 display x,y,w;
+
+option log_file "";
+
+
+
