@@ -1,0 +1,11 @@
+param R := 0.0005;
+param L := 100;
+param C1:= 0.0011;
+param C2:= 0.0001;
+param m := 10;
+param M := 110;
+param S := 10;
+
+
+
+

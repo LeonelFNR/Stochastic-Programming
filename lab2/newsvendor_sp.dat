@@ -1,0 +1,7 @@
+param N := 5000;
+param a := 100;
+param b := 200;
+param q := 10;
+param r := 5;
+param c := 8;
+param u := 200;
