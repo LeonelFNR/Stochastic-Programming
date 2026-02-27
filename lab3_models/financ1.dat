@@ -1,0 +1,18 @@
+#dades de la versio sense explicitar els escenaris del problema 
+#simple financer
+
+set PROD_INVERTIR := a b ; #a=accions, b=bons
+set T_RETORN := 0 1 2;  #0 equival al conjunt buit (no existeix aquest tipus
+					    #de retorn, i nomes s'usa per comoditat a l'hora de
+						#definir les variables)	
+
+param prob default 0.125;
+param T := 3;
+param B := 55;
+param G:= 80;
+param Q := 1 ;
+param P := 4 ;
+param r : 		1      	2 :=
+	  	a	  	1.25	1.06
+	  	b		1.14	1.12 ;	
+
