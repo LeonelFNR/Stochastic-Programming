@@ -1,0 +1,14 @@
+reset;
+shell "cd";
+option log_file "results.txt";
+
+model student.mod;
+data student.dat;
+option solver cplex;
+show;
+expand;
+solve;
+
+display x1,x2,y1,y2;
+
+option log_file "";

@@ -1,0 +1,117 @@
+
+parameters:   N   prob_exam   prob_match   q1   q2
+
+sets:   R   S
+
+variables:   x1   x2   y1   y2
+
+constraints:
+match_shortage_compensation   study_shortage_compensation
+number_hours
+
+objective:   Weighted_Shortage
+minimize Weighted_Shortage:
+	0.166667*y1[1,1] + 0.166667*y1[1,2] + 0.166667*y1[1,3] + 
+	0.166667*y1[1,4] + 0.166667*y1[2,1] + 0.166667*y1[2,2] + 
+	0.166667*y1[2,3] + 0.166667*y1[2,4] + 0.166667*y1[3,1] + 
+	0.166667*y1[3,2] + 0.166667*y1[3,3] + 0.166667*y1[3,4] + 
+	0.0833333*y2[1,1] + 0.0833333*y2[1,2] + 0.0833333*y2[1,3] + 
+	0.0833333*y2[1,4] + 0.0833333*y2[2,1] + 0.0833333*y2[2,2] + 
+	0.0833333*y2[2,3] + 0.0833333*y2[2,4] + 0.0833333*y2[3,1] + 
+	0.0833333*y2[3,2] + 0.0833333*y2[3,3] + 0.0833333*y2[3,4];
+
+subject to number_hours:
+	x1 + x2 <= 10;
+
+subject to study_shortage_compensation[1,1]:
+	y1[1,1] + x1 >= 7.8;
+
+subject to study_shortage_compensation[1,2]:
+	y1[1,2] + x1 >= 8;
+
+subject to study_shortage_compensation[1,3]:
+	y1[1,3] + x1 >= 8.5;
+
+subject to study_shortage_compensation[1,4]:
+	y1[1,4] + x1 >= 9.3;
+
+subject to study_shortage_compensation[2,1]:
+	y1[2,1] + x1 >= 7.8;
+
+subject to study_shortage_compensation[2,2]:
+	y1[2,2] + x1 >= 8;
+
+subject to study_shortage_compensation[2,3]:
+	y1[2,3] + x1 >= 8.5;
+
+subject to study_shortage_compensation[2,4]:
+	y1[2,4] + x1 >= 9.3;
+
+subject to study_shortage_compensation[3,1]:
+	y1[3,1] + x1 >= 7.8;
+
+subject to study_shortage_compensation[3,2]:
+	y1[3,2] + x1 >= 8;
+
+subject to study_shortage_compensation[3,3]:
+	y1[3,3] + x1 >= 8.5;
+
+subject to study_shortage_compensation[3,4]:
+	y1[3,4] + x1 >= 9.3;
+
+subject to match_shortage_compensation[1,1]:
+	y2[1,1] + x2 >= 2;
+
+subject to match_shortage_compensation[1,2]:
+	y2[1,2] + x2 >= 2;
+
+subject to match_shortage_compensation[1,3]:
+	y2[1,3] + x2 >= 2;
+
+subject to match_shortage_compensation[1,4]:
+	y2[1,4] + x2 >= 2;
+
+subject to match_shortage_compensation[2,1]:
+	y2[2,1] + x2 >= 2.7;
+
+subject to match_shortage_compensation[2,2]:
+	y2[2,2] + x2 >= 2.7;
+
+subject to match_shortage_compensation[2,3]:
+	y2[2,3] + x2 >= 2.7;
+
+subject to match_shortage_compensation[2,4]:
+	y2[2,4] + x2 >= 2.7;
+
+subject to match_shortage_compensation[3,1]:
+	y2[3,1] + x2 >= 3.2;
+
+subject to match_shortage_compensation[3,2]:
+	y2[3,2] + x2 >= 3.2;
+
+subject to match_shortage_compensation[3,3]:
+	y2[3,3] + x2 >= 3.2;
+
+subject to match_shortage_compensation[3,4]:
+	y2[3,4] + x2 >= 3.2;
+
+CPLEX 22.1.2: CPLEX 22.1.2: optimal solution; objective 1.533333333
+5 simplex iterations
+x1 = 8
+x2 = 2
+
+:     y1    y2     :=
+1 1   0     0
+1 2   0     0
+1 3   0.5   0
+1 4   1.3   0
+2 1   0     0.7
+2 2   0     0.7
+2 3   0.5   0.7
+2 4   1.3   0.7
+3 1   0     1.2
+3 2   0     1.2
+3 3   0.5   1.2
+3 4   1.3   1.2
+;
+

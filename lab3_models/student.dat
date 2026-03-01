@@ -1,0 +1,21 @@
+set R := 1 2 3; # set of match possible events
+set S := 1 2 3 4; # set of possible exams diffs.
+
+param N := 10;
+
+# game duration
+param q2:=	
+		1	2
+		2	2.7
+		3	3.2
+		; 
+		
+# exam diff	
+param q1:=	
+		1	7.8
+		2	8
+		3	8.5
+		4	9.3
+		; 
+		
+		
