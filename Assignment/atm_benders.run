@@ -1,0 +1,68 @@
+reset;
+option solver cplex;
+model atm_benders.mod;
+data atm_benders.dat;
+
+
+
+param eps default 1e-8;
+param max_iter integer default 100;
+param iter integer default 0;
+param gap default Infinity;
+param upper_bound default Infinity;
+param lower_bound default -Infinity;
+
+printf "\n================ EXTENSIVE FORM ================\n";
+solve Extensive;
+printf "Extensive objective = %.10f\n", Extensive_Obj;
+printf "Extensive x         = %.10f\n", x;
+printf "Extensive y values:\n";
+display y;
+
+printf "\n================ BENDERS DECOMPOSITION ================\n";
+let nCUT := 0;
+let iter := 0;
+let gap := Infinity;
+
+repeat while iter < max_iter {
+    let iter := iter + 1;
+
+    solve Master;
+    let lower_bound := Master_Obj;
+    let xbar := xb;
+
+    solve Subproblem;
+    let upper_bound := c * xbar + Subproblem_Obj;
+    let gap := upper_bound - lower_bound;
+
+    printf "Iteration %d: x = %.10f, theta = %.10f, LB = %.10f, UB = %.10f, gap = %.10g\n",
+        iter, xbar, theta, lower_bound, upper_bound, gap;
+
+    if gap <= eps then break;
+
+    if nCUT >= MAXCUTS then {
+        printf "ERROR: maximum number of cuts reached. Increase MAXCUTS in the .dat file.\n";
+        break;
+    }
+
+    let nCUT := nCUT + 1;
+    let cut_rhs[nCUT] := sum {i in SCENARIOS} alpha[i] * xi[i];
+    let cut_slope[nCUT] := - sum {i in SCENARIOS} alpha[i];
+
+    printf "  Added cut %d: theta >= %.10f %+ .10f x\n",
+        nCUT, cut_rhs[nCUT], cut_slope[nCUT];
+}
+
+printf "\n================ FINAL BENDERS SOLUTION ================\n";
+printf "Iterations         = %d\n", iter;
+printf "Benders objective  = %.10f\n", upper_bound;
+printf "Benders x          = %.10f\n", xbar;
+printf "Final theta        = %.10f\n", Subproblem_Obj;
+printf "Final gap          = %.10g\n", gap;
+printf "Number of cuts     = %d\n", nCUT;
+
+display alpha;
+
+printf "\nComparison with extensive form:\n";
+printf "|x_Benders - x_Extensive|       = %.10g\n", abs(xbar - x);
+printf "|obj_Benders - obj_Extensive|   = %.10g\n", abs(upper_bound - Extensive_Obj);
